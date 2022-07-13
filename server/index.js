@@ -9,9 +9,11 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
+const PORT = process.env.PORT || 9000;
+const DB = process.env.MONGO_DATABASE;
 //DB config
 mongoose.connect(
-  "mongodb://localhost:27017/reminderAppDB",
+  DB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -109,4 +111,8 @@ app.post("/deleteReminder", (req, res) => {
   });
 });
 
-app.listen(9000, () => console.log("Be started"));
+app.get("/", (req, res) => {
+  res.send("Server is Working Fine!!!");
+});
+
+app.listen(PORT, () => console.log("Be started"));
