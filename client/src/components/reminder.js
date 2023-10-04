@@ -20,13 +20,13 @@ const Reminder = () => {
 
   useEffect(() => {
     axios
-      .get("https://reminder-backend-twilio.herokuapp.com/getAllReminder")
+      .get("https://reminderdb-server.vercel.app/getAllReminder")
       .then((res) => setReminderList(res.data));
   }, []);
 
   const addReminder = () => {
     axios
-      .post("https://reminder-backend-twilio.herokuapp.com/addReminder", {
+      .post("https://reminderdb-server.vercel.app/addReminder", {
         reminderMsg,
         remindAt,
       })
@@ -37,7 +37,7 @@ const Reminder = () => {
 
   const deleteReminder = (id) => {
     axios
-      .post("https://reminder-backend-twilio.herokuapp.com/deleteReminder", {
+      .post("https://reminderdb-server.vercel.app/deleteReminder", {
         id,
       })
       .then((res) => setReminderList(res.data));
